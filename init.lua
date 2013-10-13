@@ -5,6 +5,15 @@ minetest.register_tool("mapp:map", {
 	map_handler(itemstack,user,pointed_thing)
 	end,
 })
+
+minetest.register_craft({
+	output = "mapp:map",
+	recipe = {
+		{"homedecor:plastic_sheeting", "default:steel_ingot", "homedecor:plastic_sheeting", },
+		{"homedecor:plastic_sheeting", "moreblocks:iron_glass", "homedecor:plastic_sheeting", },
+		{"homedecor:plastic_sheeting", "homedecor:ic", "homedecor:plastic_sheeting", }
+	}
+})
 function map_handler (itemstack, user, pointed_thing)
 		local pos = user:getpos()
 		local player_name=user:get_player_name()
@@ -23,7 +32,7 @@ function map_handler (itemstack, user, pointed_thing)
            yaw = math.deg(yaw)
            yaw = math.fmod (yaw, 360)
            if yaw<0 then yaw = 360 + yaw end
-           if yaw>360 then yaw = yaw - 360 end           
+           if yaw>360 then yaw = yaw - 360 end
            if yaw < 90 then
               rotate = 90
            elseif yaw < 180 then
@@ -35,7 +44,7 @@ function map_handler (itemstack, user, pointed_thing)
            end
            yaw = math.fmod(yaw, 90)
            yaw = math.floor(yaw / 10) * 10
-           
+
         end
 
 		--Localise some global minetest variables for speed.
